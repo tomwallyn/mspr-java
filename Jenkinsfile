@@ -4,8 +4,16 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello World'
-                echo ${env.BRANCH_NAME}
+                echo 'Hello World 2'
+                echo "${env.BUILD_ID}"
+            }
+        }
+        stage('Example Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying'
             }
         }
     }
