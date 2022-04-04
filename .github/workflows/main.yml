@@ -5,6 +5,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Build maven app
 
     steps:
       - uses: actions/checkout@v3
@@ -15,3 +16,22 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+
+  run_tests:
+    runs-on: ubuntu-latest
+    name: Run test maven
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Run tests with Maven
+        run: mvn -Dtest=UnitTestHTMLFileCreator,UnitTestReaderJava test
