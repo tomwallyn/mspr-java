@@ -9,5 +9,8 @@
         <module name="msprJavaMaven" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="msprJavaMaven" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

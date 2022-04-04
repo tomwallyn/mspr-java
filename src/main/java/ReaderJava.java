@@ -34,6 +34,24 @@ public class ReaderJava {
         return new File("src/main/resources/assets/" + user + ".txt");
     }
 
+    public String getHtpasswd(String user) throws IOException {
+        File file = getUserFile(user);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+        ArrayList<String> allLines = new ArrayList<>();
+        while ((line=br.readLine())!=null){
+            allLines.add(line.trim());
+        }
+        int index = 0;
+        for (String allLine : allLines) {
+            if (Objects.equals(allLine, "")){
+                index = allLines.indexOf(allLine);
+            }
+        }
+        return allLines.get(index - 1);
+
+    }
+
     public ArrayList<String> getAllItemsFromUser(String user) throws IOException {
         File file = getUserFile(user);
         BufferedReader br = new BufferedReader(new FileReader(file));

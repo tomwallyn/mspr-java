@@ -16,6 +16,7 @@ public class Main {
                 htmlFileCreator.createUserPage(user, null, null);
             }
         }
+        System.out.println(readerJava.getHtpasswd("cberthier"));
     }
 
 
