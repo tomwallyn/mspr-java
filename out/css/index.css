@@ -1,0 +1,18 @@
+html {
+  font-family: "Roboto";
+}
+
+.main {
+  text-align: center;
+}
+
+.title {
+  font-size: 5vw;
+  color: #379ec1;
+}
+
+.subtitle {
+  font-size: 2vw;
+  color: #659224;
+  
+}
