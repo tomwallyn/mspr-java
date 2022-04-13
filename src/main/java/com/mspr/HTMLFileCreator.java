@@ -1,5 +1,7 @@
 package com.mspr;
 
+import org.springframework.util.FileSystemUtils;
+
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ public class HTMLFileCreator {
         }
         String usersLinks = "";
         for (String user : users) {
-            usersLinks += "<a href=\"../" + user + ".html\">" + user + " </a> <br><br>";
+            usersLinks += "<a href=\"./" + user + ".html\">" + user + " </a> <br><br>";
         }
         String indexPage = page.replaceAll("AGENT", usersLinks);
         bw.write(indexPage);
@@ -54,11 +56,17 @@ public class HTMLFileCreator {
 
             }
         }
-        String img = "<img src=\"src/main/resources/assets/" + user + ".jpg\" />";
+        String img = "<img src=\"../img/" + user + ".jpg\" />";
         String userPage = page.replaceAll("AGENT_NOM", user).replaceAll("AGENT_IMAGE", img).replaceAll("AGENT_ITEMS", itemsString).replaceAll("ITEMS_NON", itemsNotUsedString);
         bw.write(userPage);
         br.close();
         bw.close();
+    }
+
+    public void copyUserImageToOutDir(String user) throws IOException {
+        File imageUser = new File("src/main/resources/assets/"+user+".jpg");
+        File imageUserCopied = new File("out/img/"+user+".jpg");
+        FileSystemUtils.copyRecursively(imageUser,imageUserCopied);
     }
 
 }

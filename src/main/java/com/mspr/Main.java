@@ -2,7 +2,6 @@ package com.mspr;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -11,14 +10,11 @@ public class Main {
         ArrayList<String> listOfUsers = readerJava.getAListOfUsersFromAFile();
         htmlFileCreator.createIndexPage(listOfUsers);
         for (String user : listOfUsers) {
-            if (Objects.equals(user, "cberthier")) {
-
-                htmlFileCreator.createUserPage(user, readerJava.getAllItemsFromUser(user), readerJava.getAllItemsNotUsedByUsers(user));
-            } else {
-                htmlFileCreator.createUserPage(user, null, null);
-            }
+           htmlFileCreator.createUserPage(user, readerJava.getAllItemsFromUser(user), readerJava.getAllItemsNotUsedByUsers(user));
+           htmlFileCreator.copyUserImageToOutDir(user);
         }
-        System.out.println(readerJava.getHtpasswd("cberthier"));
+        HTPasswdFileCreator htPasswdFileCreator = new HTPasswdFileCreator();
+        htPasswdFileCreator.createHTPasswdFile(listOfUsers);
     }
 
 
