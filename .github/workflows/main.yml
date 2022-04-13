@@ -54,6 +54,19 @@ jobs:
       - name: Build with Maven
         run: |
           mvn exec:java -D"exec.mainClass"="com.mspr.Main"
+
+      - uses: actions/checkout@v2
+
+      - run: ls out/html
+
+      - run: mkdir -p path/to/artifact
+
+      - run: cp -a out/html/. path/to/artifact/
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: path/to/artifact/
   
   deploy-in-prod:
     name: Deploy in prod
@@ -68,5 +81,18 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          cd /var/www/html
-          ls
+          rm -f /var/www/html/*
+
+  artifact-use-build:
+    name: Re-use Artifact
+    runs-on: ubuntu-latest
+    needs: run
+  
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/download-artifact@v2
+      with:
+        name: my-artifact
+        path: path/to/artifact
+    - run: ls path/to/artifact
