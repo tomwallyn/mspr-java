@@ -54,5 +54,3 @@ jobs:
       - name: Build with Maven
         run: |
           mvn exec:java -D"exec.mainClass"="com.mspr.Main"
-          cd out/html
-          ls
