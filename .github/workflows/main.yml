@@ -42,7 +42,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     name: Run maven app
-    needs: run_tests
+    needs: [run_tests, build]
 
     steps:
       - uses: actions/checkout@v3
@@ -53,6 +53,52 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: |
-        mvn exec:java -D"exec.mainClass"="com.mspr.Main"
-        cd out/html
-        ls
+          mvn exec:java -D"exec.mainClass"="com.mspr.Main"
+
+      - uses: actions/checkout@v2
+
+      - run: mkdir -p path/to/artifact
+      - run: cp -a out/. path/to/artifact/
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: path/to/artifact/
+  
+  deploy-in-prod:
+    name: Deploy in prod
+    runs-on: ubuntu-latest
+    needs: run
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Clear Apache server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        envs: TEST
+        script: |
+          rm -f /var/www/html/*
+
+    - name: Upload html file via SSH
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: out/html
+        remote: /var/www/html
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+
+    - name: Upload css file via SSH
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: out/css
+        remote: /var/www/html
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
