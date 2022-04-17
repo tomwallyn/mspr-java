@@ -7,6 +7,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ReaderJava readerJava = new ReaderJava();
         HTMLFileCreator htmlFileCreator = new HTMLFileCreator();
+        ContentSuppressor contentSuppressor = new ContentSuppressor();
+        contentSuppressor.deleteFiles(contentSuppressor.getAllFilesInAFolder("html"));
+        contentSuppressor.deleteFiles(contentSuppressor.getAllFilesInAFolder("img"));
         ArrayList<String> listOfUsers = readerJava.getAListOfUsersFromAFile();
         htmlFileCreator.createIndexPage(listOfUsers);
         for (String user : listOfUsers) {
