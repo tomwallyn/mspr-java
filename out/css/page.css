@@ -1,0 +1,62 @@
+.pageContainer {
+  width: 50%;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5%;
+  background-color: whitesmoke;
+}
+
+.headerContainer {
+  width: 100%;
+  height: 40%;
+}
+
+.headerTitle {
+  float: left;
+  border: 1px solid #659224;
+  padding: 1%;
+  width: 20%;
+  text-align: center;
+  margin-top: 2%;
+  color: #379ec1;
+  font-family: "Roboto";
+}
+
+.headerImage {
+  width: 40%;
+  height: 100%;
+  float: right;
+}
+
+.itemsContainer {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: "Roboto";
+}
+
+.itemsTitle {
+  color: #379ec1;
+  font-family: "Roboto";
+}
+
+.buttonContainer {
+  width: 10%;
+  height: fit-content;
+}
+.button {
+  background-color: #659224;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Roboto";
+}
