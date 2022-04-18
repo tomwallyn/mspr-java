@@ -82,14 +82,15 @@ jobs:
         port: ${{ secrets.PORT }}
         envs: TEST
         script: |
-          rm -f /var/www/html/*
-          rm -f /var/www/css/*
+          rm -f /var/www/html/html/*
+          rm -f /var/www/html/css/*
+          rm -f /var/www/html/img/*
 
     - name: Upload html file via SSH
       uses: garygrossgarten/github-action-scp@release
       with:
         local: out/html
-        remote: /var/www/html
+        remote: /var/www/html/html
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
@@ -99,7 +100,17 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with:
         local: out/css
-        remote: /var/www/css
+        remote: /var/www/html/css
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+
+    - name: Upload img file via SSH
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: out/img
+        remote: /var/www/html/img
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
