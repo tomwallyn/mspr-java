@@ -44,7 +44,7 @@ public class HTMLFileCreator {
         if (items != null) {
             for (String item : items) {
                 itemsString += "<div><label for=\"" + item + "\">" + item + "</label>\n";
-                itemsString += "<input type=\"checkbox\" id=\"" + item + "\" name=\"" + item + "\" checked /> </div>\n";
+                itemsString += "<input type=\"checkbox\" id=\"" + item + "\" name=\"" + item + "\" onclick=\"return false;\" checked /> </div>\n";
 
             }
         }
@@ -52,11 +52,11 @@ public class HTMLFileCreator {
         if (itemsNotUsed != null) {
             for (String item : itemsNotUsed) {
                 itemsNotUsedString += "<div><label for=\"" + item + "\">" + item + "</label>\n";
-                itemsNotUsedString += "<input type=\"checkbox\" id=\"" + item + "\" name=\"" + item + "\"  /> </div>\n";
+                itemsNotUsedString += "<input type=\"checkbox\" id=\"" + item + "\" name=\"" + item + "\" onclick=\"return false;\"  /> </div>\n";
 
             }
         }
-        String img = "<img src=\"../img/" + user + ".jpg\" />";
+        String img = "<img src=\"../img/" + user + ".jpg\" style=\"width: 80%\" />";
         String userPage = page.replaceAll("AGENT_NOM", user).replaceAll("AGENT_IMAGE", img).replaceAll("AGENT_ITEMS", itemsString).replaceAll("ITEMS_NON", itemsNotUsedString);
         bw.write(userPage);
         br.close();
