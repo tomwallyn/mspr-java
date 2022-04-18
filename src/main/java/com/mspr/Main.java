@@ -1,8 +1,10 @@
 package com.mspr;
 
+import com.mspr.runners.RunnerAPI;
 import com.mspr.runners.RunnerHTPass;
 import com.mspr.runners.RunnerIndex;
 import com.mspr.runners.RunnerPages;
+import com.mspr.utils.APIFileCreator;
 import com.mspr.utils.ContentSuppressor;
 import com.mspr.utils.HTMLFileCreator;
 import com.mspr.utils.HTPasswdFileCreator;
@@ -19,12 +21,17 @@ public class Main {
 
         ReaderJava readerJava = new ReaderJava();
         HTMLFileCreator htmlFileCreator = new HTMLFileCreator();
+        APIFileCreator apiFileCreator = new APIFileCreator();
         HTPasswdFileCreator htPasswdFileCreator = new HTPasswdFileCreator();
         ArrayList<String> listOfUsers = readerJava.getAListOfUsersFromAFile();
 
         RunnerIndex runnerIndex = new RunnerIndex(htmlFileCreator,listOfUsers);
         Thread threadIndex = new Thread(runnerIndex);
         threadIndex.start();
+
+        RunnerAPI runnerAPI = new RunnerAPI(apiFileCreator);
+        Thread threadAPI = new Thread(runnerAPI);
+        threadAPI.start();
 
         RunnerPages runnerPages = new RunnerPages(htmlFileCreator,listOfUsers,readerJava);
         Thread threadPages = new Thread(runnerPages);
