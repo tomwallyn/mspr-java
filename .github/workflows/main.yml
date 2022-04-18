@@ -83,6 +83,7 @@ jobs:
         envs: TEST
         script: |
           rm -f /var/www/html/*
+          rm -f /var/www/css/*
 
     - name: Upload html file via SSH
       uses: garygrossgarten/github-action-scp@release
