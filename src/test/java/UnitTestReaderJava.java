@@ -1,4 +1,4 @@
-import com.mspr.ReaderJava;
+import com.mspr.utils.ReaderJava;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

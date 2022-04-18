@@ -1,4 +1,4 @@
-package com.mspr;
+package com.mspr.utils;
 
 import org.springframework.util.FileSystemUtils;
 
