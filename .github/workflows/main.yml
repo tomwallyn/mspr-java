@@ -53,6 +53,7 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: |
+          mvn clean install
           mvn exec:java -D"exec.mainClass"="com.mspr.Main"
 
       - uses: actions/checkout@v2
