@@ -1,4 +1,4 @@
-import com.mspr.HTMLFileCreator;
+import com.mspr.utils.HTMLFileCreator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
