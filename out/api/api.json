@@ -1,36 +1,41 @@
+[
 {
-  "items": [
-    {
-"mousqueton":{
 "nom": "Mousqueton",
-"users":["cberthier"]
-},"gants":{
+"users":["cberthier", "mmartin"]
+},
+{
 "nom": "Gants d’intervention",
 "users":[]
-},"brassard":{
+},
+{
 "nom": "Brassard de sécurité",
 "users":[]
-},"menottes":{
+},
+{
 "nom": "Porte menottes",
 "users":[]
-},"cyno":{
+},
+{
 "nom": "Bandeau agent cynophile",
-"users":[]
-},"talky":{
+"users":["mmartin"]
+},
+{
 "nom": "Talkies walkies",
-"users":[]
-},"lampe":{
+"users":["mmartin"]
+},
+{
 "nom": "Lampe",
 "users":["cberthier", "sconnor"]
-},"kit":{
+},
+{
 "nom": "Kit oreillette",
 "users":["cberthier", "sconnor"]
-},"taser":{
+},
+{
 "nom": "Tasers",
-"users":[]
-},"lacrymo":{
+"users":["mmartin"]
+},
+{
 "nom": "Bombes lacrymogènes",
 "users":["cberthier", "sconnor"]
-},    }
-  ]
-}
+}]

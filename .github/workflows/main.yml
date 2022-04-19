@@ -52,14 +52,14 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
+        working-directory: ${{env.GITHUB_WORKSPACE}}
         run: |
           mvn clean install
           mvn exec:java -D"exec.mainClass"="com.mspr.Main"
-
-      - uses: actions/checkout@v2
-
-      - run: mkdir -p path/to/artifact
-      - run: cp -a out/. path/to/artifact/
+          ls "${{ env.GITHUB_WORKSPACE }}out/html"
+          ls ${{ env.GITHUB_WORKSPACE }}
+          mkdir -p path/to/artifact
+          cp -a "${{ env.GITHUB_WORKSPACE }}out/." path/to/artifact/
 
       - uses: actions/upload-artifact@v2
         with:
@@ -72,7 +72,6 @@ jobs:
     needs: run
     steps:
     - uses: actions/checkout@v2
-    - run: cat out/api/api.json
 
     - name: Clear Apache server
       uses: appleboy/ssh-action@master
@@ -87,6 +86,16 @@ jobs:
           rm -f /var/www/html/css/*
           rm -f /var/www/html/img/*
           rm -f /var/www/html/api/*
+
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
+        path: path/to/artifact
+    
+    - name: Display structure of downloaded files
+      run: |
+        ls html
+      working-directory: path/to/artifact
 
     - name: Upload html file via SSH
       uses: garygrossgarten/github-action-scp@release

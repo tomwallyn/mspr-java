@@ -12,13 +12,10 @@ public class APIFileCreator {
         ArrayList<String> users = readerJava.getAListOfUsersFromAFile();
 
         BufferedWriter bw = new BufferedWriter(new FileWriter(index));
-        bw.write("{\n" +
-                "  \"items\": [\n" +
-                "    {\n");
+        bw.write("[\n");
         for (Map item : items) {
             String itemName = item.values().toArray()[0].toString();
-            String itemCode = item.keySet().toArray()[0].toString();
-            bw.write("\"" + itemCode + "\":{\n" +
+            bw.write("{\n" +
                     "\"nom\": \"" + itemName + "\",\n" +
                     "\"users\":" + readerJava.getAllUsersThatUseAnItem(itemName, users) + "\n");
             if (itemName == items.get(items.size() - 1).values().toArray()[0].toString()) {
@@ -28,9 +25,7 @@ public class APIFileCreator {
             }
 
         }
-        bw.write("    }\n" +
-                "  ]\n" +
-                "}");
+        bw.write("]");
         bw.close();
     }
 }
