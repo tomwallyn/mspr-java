@@ -13,12 +13,12 @@ public class APIFileCreator {
 
         BufferedWriter bw = new BufferedWriter(new FileWriter(index));
         bw.write("{\n" +
-                "  items: [\n" +
+                "  \"items\": [\n" +
                 "    {\n");
         for (Map item : items) {
             String itemName = item.values().toArray()[0].toString();
             String itemCode = item.keySet().toArray()[0].toString();
-            bw.write(itemCode + ":{\n" +
+            bw.write("\""+itemCode + "\":{\n" +
                     "\"nom\": \"" + itemName + "\",\n" +
                     "\"users\":" + readerJava.getAllUsersThatUseAnItem(itemName, users) + "\n" +
                     "},");
