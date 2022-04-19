@@ -18,10 +18,15 @@ public class APIFileCreator {
         for (Map item : items) {
             String itemName = item.values().toArray()[0].toString();
             String itemCode = item.keySet().toArray()[0].toString();
-            bw.write("\""+itemCode + "\":{\n" +
+            bw.write("\"" + itemCode + "\":{\n" +
                     "\"nom\": \"" + itemName + "\",\n" +
-                    "\"users\":" + readerJava.getAllUsersThatUseAnItem(itemName, users) + "\n" +
-                    "},");
+                    "\"users\":" + readerJava.getAllUsersThatUseAnItem(itemName, users) + "\n");
+            if (itemName == items.get(items.size() - 1).values().toArray()[0].toString()) {
+                bw.write("}");
+            } else {
+                bw.write("},\n");
+            }
+
         }
         bw.write("    }\n" +
                 "  ]\n" +
