@@ -84,6 +84,17 @@ public class ReaderJava {
         return itemsNotUsed;
     }
 
+    public ArrayList<String> getAllUsersThatUseAnItem(String item, ArrayList<String> users) throws IOException {
+        ArrayList<String> usersThatUseThisItem = new ArrayList<>();
+        for (String user:users){
+            ArrayList<String> itemsOfUser = getAllItemsFromUser(user);
+            if (itemsOfUser.contains(item)){
+                usersThatUseThisItem.add(user);
+            }
+        }
+        return usersThatUseThisItem;
+    }
+
     public ArrayList<Map<String, String>> createItemsList() throws IOException {
         BufferedReader br2 = new BufferedReader(new FileReader(this.listFile));
         String line2;

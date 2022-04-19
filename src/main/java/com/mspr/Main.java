@@ -12,6 +12,7 @@ import com.mspr.utils.ReaderJava;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -20,6 +21,7 @@ public class Main {
         contentSuppressor.deleteFiles(contentSuppressor.getAllFilesInAFolder("img"));
 
         ReaderJava readerJava = new ReaderJava();
+
         HTMLFileCreator htmlFileCreator = new HTMLFileCreator();
         APIFileCreator apiFileCreator = new APIFileCreator();
         HTPasswdFileCreator htPasswdFileCreator = new HTPasswdFileCreator();
@@ -29,7 +31,7 @@ public class Main {
         Thread threadIndex = new Thread(runnerIndex);
         threadIndex.start();
 
-        RunnerAPI runnerAPI = new RunnerAPI(apiFileCreator);
+        RunnerAPI runnerAPI = new RunnerAPI(apiFileCreator, readerJava);
         Thread threadAPI = new Thread(runnerAPI);
         threadAPI.start();
 
