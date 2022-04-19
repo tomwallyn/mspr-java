@@ -1,12 +1,68 @@
 {
-  "users": [
+  "items": [
     {
-      "username": "admin",
-      "password": "admin"
-    },
-    {
-      "username": "user",
-      "password": "user"
+      mousqueton: {
+        "nom": Mousqueton,
+        "users": [
+          cberthier
+        ]
+      }
+      gants: {
+        "nom": Gants
+        d
+        ’
+        intervention,
+        "users": []
+      }
+      brassard: {
+        "nom": Brassard
+        de
+        sécurité,
+        "users": []
+      }
+      menottes: {
+        "nom": Porte
+        menottes,
+        "users": []
+      }
+      cyno: {
+        "nom": Bandeau
+        agent
+        cynophile,
+        "users": []
+      }
+      talky: {
+        "nom": Talkies
+        walkies,
+        "users": []
+      }
+      lampe: {
+        "nom": Lampe,
+        "users": [
+          cberthier,
+          sconnor
+        ]
+      }
+      kit: {
+        "nom": Kit
+        oreillette,
+        "users": [
+          cberthier,
+          sconnor
+        ]
+      }
+      taser: {
+        "nom": Tasers,
+        "users": []
+      }
+      lacrymo: {
+        "nom": Bombes
+        lacrymogènes,
+        "users": [
+          cberthier,
+          sconnor
+        ]
+      }
     }
   ]
 }
