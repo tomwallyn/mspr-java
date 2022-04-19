@@ -19,6 +19,7 @@ public class Main {
         ContentSuppressor contentSuppressor = new ContentSuppressor();
         contentSuppressor.deleteFiles(contentSuppressor.getAllFilesInAFolder("html"));
         contentSuppressor.deleteFiles(contentSuppressor.getAllFilesInAFolder("img"));
+        contentSuppressor.deleteFiles(contentSuppressor.getAllFilesInAFolder("api"));
 
         ReaderJava readerJava = new ReaderJava();
 
