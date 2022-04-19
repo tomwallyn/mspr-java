@@ -1,4 +1,4 @@
-## User password 
+## User password
 # (Encrypted with : https://www.web2generators.com/apache-tools/htpasswd-generator)
 
 admin:admin
