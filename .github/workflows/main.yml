@@ -72,6 +72,7 @@ jobs:
     needs: run
     steps:
     - uses: actions/checkout@v2
+    - run: cat out/api/api.json
 
     - name: Clear Apache server
       uses: appleboy/ssh-action@master
@@ -86,7 +87,6 @@ jobs:
           rm -f /var/www/html/css/*
           rm -f /var/www/html/img/*
           rm -f /var/www/html/api/*
-          cat out/api/api.json
 
     - name: Upload html file via SSH
       uses: garygrossgarten/github-action-scp@release

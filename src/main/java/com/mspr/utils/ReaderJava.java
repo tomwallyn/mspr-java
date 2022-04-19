@@ -8,16 +8,16 @@ public class ReaderJava {
     private final File staffFile;
     private final File listFile;
 
-    public ReaderJava(){
+    public ReaderJava() {
         this.staffFile = new File("src/main/resources/assets/staff.txt");
         this.listFile = new File("src/main/resources/assets/list.txt");
     }
 
     /**
      * @param staffFile the txt file containing staff list
-     * @param listFile the txt file containing the list of all items available
+     * @param listFile  the txt file containing the list of all items available
      */
-    public ReaderJava(File staffFile, File listFile){
+    public ReaderJava(File staffFile, File listFile) {
         this.staffFile = staffFile;
         this.listFile = listFile;
     }
@@ -32,7 +32,7 @@ public class ReaderJava {
         return listOfUsers;
     }
 
-    public File getUserFile(String user){
+    public File getUserFile(String user) {
         return new File("src/main/resources/assets/" + user + ".txt");
     }
 
@@ -41,12 +41,12 @@ public class ReaderJava {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         ArrayList<String> allLines = new ArrayList<>();
-        while ((line=br.readLine())!=null){
+        while ((line = br.readLine()) != null) {
             allLines.add(line.trim());
         }
         int index = 0;
         for (String allLine : allLines) {
-            if (Objects.equals(allLine, "")){
+            if (Objects.equals(allLine, "")) {
                 index = allLines.indexOf(allLine);
             }
         }
@@ -86,10 +86,10 @@ public class ReaderJava {
 
     public ArrayList<String> getAllUsersThatUseAnItem(String item, ArrayList<String> users) throws IOException {
         ArrayList<String> usersThatUseThisItem = new ArrayList<>();
-        for (String user:users){
+        for (String user : users) {
             ArrayList<String> itemsOfUser = getAllItemsFromUser(user);
-            if (itemsOfUser.contains(item)){
-                usersThatUseThisItem.add(user);
+            if (itemsOfUser.contains(item)) {
+                usersThatUseThisItem.add("\"" + user + "\"");
             }
         }
         return usersThatUseThisItem;

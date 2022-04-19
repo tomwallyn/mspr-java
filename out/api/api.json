@@ -1,36 +1,36 @@
 {
-  items: [
+  "items": [
     {
-mousqueton:{
+"mousqueton":{
 "nom": "Mousqueton",
-"users":[cberthier]
-},gants:{
+"users":["cberthier"]
+},"gants":{
 "nom": "Gants d’intervention",
 "users":[]
-},brassard:{
+},"brassard":{
 "nom": "Brassard de sécurité",
 "users":[]
-},menottes:{
+},"menottes":{
 "nom": "Porte menottes",
 "users":[]
-},cyno:{
+},"cyno":{
 "nom": "Bandeau agent cynophile",
 "users":[]
-},talky:{
+},"talky":{
 "nom": "Talkies walkies",
 "users":[]
-},lampe:{
+},"lampe":{
 "nom": "Lampe",
-"users":[cberthier, sconnor]
-},kit:{
+"users":["cberthier", "sconnor"]
+},"kit":{
 "nom": "Kit oreillette",
-"users":[cberthier, sconnor]
-},taser:{
+"users":["cberthier", "sconnor"]
+},"taser":{
 "nom": "Tasers",
 "users":[]
-},lacrymo:{
+},"lacrymo":{
 "nom": "Bombes lacrymogènes",
-"users":[cberthier, sconnor]
+"users":["cberthier", "sconnor"]
 },    }
   ]
 }
