@@ -86,6 +86,7 @@ jobs:
           rm -f /var/www/html/css/*
           rm -f /var/www/html/img/*
           rm -f /var/www/html/api/*
+          cat out/api/api.json
 
     - name: Upload html file via SSH
       uses: garygrossgarten/github-action-scp@release
@@ -117,7 +118,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
 
-    - name: Upload img file via SSH
+    - name: Upload api file via SSH
       uses: garygrossgarten/github-action-scp@release
       with:
         local: out/api
